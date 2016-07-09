@@ -14,7 +14,7 @@ control 'cis-sw-1.2.2' do
         spoofing that could lead to the inadvertent installation of malware on the system."
   tag software: 'gpg'
 
-  check_centos_gpg=command('rpm -q --queryformat "%{SUMMARY}\n" gpg-pubkey | grep CentOS-7')
+  check_centos_gpg = command('rpm -q --queryformat "%{SUMMARY}\n" gpg-pubkey | grep CentOS-7')
 
   describe check_centos_gpg do
     its('exit_status') { should eq 0 }
@@ -29,7 +29,7 @@ control 'cis-sw-1.2.3' do
   tag software: 'gpg'
 
   describe file('/etc/yum.conf') do
-    its('content') { should match /gpgcheck=1/ }
+    its('content') { should match(/gpgcheck=1/) }
   end
 end
 
@@ -38,7 +38,7 @@ control 'cis-sw-1.2.4' do
   title 'Disable the rhnsd Daemon'
   desc "Patch management policies may require that organizations test the impact of a patch
         before it is deployed in a production environment. Having patches automatically deployed
-        could have a negative impact on the environment. It is best to not allow an action by default 
+        could have a negative impact on the environment. It is best to not allow an action by default
         but only after appropriate consideration has been made. It is recommended that the service
         be disabled unless the risk is understood and accepted or you are running your own
         satellite . This item is not scored because organizations may have addressed the risk."
@@ -55,7 +55,7 @@ control 'cis-sw-1.2.5' do
   check_updates = command('yum update --assumeno')
 
   describe check_updates do
-    its('stdout') { should match /No packages marked for update/ }
+    its('stdout') { should match(/No packages marked for update/) }
   end
 end
 

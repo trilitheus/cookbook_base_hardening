@@ -16,5 +16,4 @@ control 'cis-aide-1.3.2' do
   desc "Periodic file checking allows the system administrator to determine on a regular basis if
         critical files have been changed in an unauthorized fashion."
   tag aide: 'cron'
-
 end

@@ -6,7 +6,7 @@ control 'cis-fs-1.1.1' do
         system allows an administrator to set the noexec option on the mount, making /tmp
         useless for an attacker to install executable code. It would also prevent an attacker from
         establishing a hardlink to a system setuid program and wait for it to be updated. Once the
-        program was updated, the hardlink would be broken and the attacker would have his own 
+        program was updated, the hardlink would be broken and the attacker would have his own
         copy of the program. If the program happened to have a security vulnerability, the attacker
         could continue to exploit the known flaw."
   tag filesystem: '/tmp'
@@ -24,7 +24,7 @@ control 'cis-fs-1.1.2' do
   tag filesystem: '/tmp'
 
   describe file('/etc/fstab') do
-    its('content') { should match %r(.*/tmp.*nodev.*) }
+    its('content') { should match %r{.*/tmp.*nodev.*} }
   end
   describe mount('/tmp') do
     its('options') { should include 'nodev' }
@@ -39,7 +39,7 @@ control 'cis-fs-1.1.3' do
   tag filesystem: '/tmp'
 
   describe file('/etc/fstab') do
-    its('content') { should match %r(.*/tmp.*nosuid.*) }
+    its('content') { should match %r{.*/tmp.*nosuid.*} }
   end
   describe mount('/tmp') do
     its('options') { should include 'nosuid' }
@@ -54,7 +54,7 @@ control 'cis-fs-1.1.4' do
   tag filesystem: '/tmp'
 
   describe file('/etc/fstab') do
-    its('content') { should match %r(.*/tmp.*noexec.*) }
+    its('content') { should match %r{.*/tmp.*noexec.*} }
   end
   describe mount('/tmp') do
     its('options') { should include 'noexec' }
@@ -125,29 +125,29 @@ control 'cis-fs-1.1.10' do
   tag filesystem: '/home'
 
   describe file('/etc/fstab') do
-    its('content') { should match %r(.*/home.*nodev.*) }
+    its('content') { should match %r{.*/home.*nodev.*} }
   end
   describe mount('/home') do
     its('options') { should include 'nodev' }
   end
 end
 
-#control 'cis-fs-1.1.11' do
+# control 'cis-fs-1.1.11' do
 #  title 'Filesystem: Add nodev Option to Removable Media Partitions'
 
-#control 'cis-fs-1.1.12' do
+# control 'cis-fs-1.1.12' do
 #  title 'Filesystem: Add noexec Option to Removable Media Partitions'
 
-#control 'cis-fs-1.1.13' do
+# control 'cis-fs-1.1.13' do
 #  title 'Filesystem: Add nosuid Option to Removable Media Partitions'
 
-#control 'cis-fs-1.1.14' do
+# control 'cis-fs-1.1.14' do
 #  title 'Filesystem: Add nodev Option to /dev/shm Partition'
 
-#control 'cis-fs-1.1.15' do
+# control 'cis-fs-1.1.15' do
 #  title 'Filesystem: Add nosuid Option to /dev/shm Partition'
 
-#control 'cis-fs-1.1.16' do
+# control 'cis-fs-1.1.16' do
 #  title 'Filesystem: Add noexec Option to /dev/shm Partition'
 
 control 'cis-fs-1.1.17' do
@@ -175,20 +175,20 @@ control 'cis-fs-1.1.18' do
   end
   check_cramfs = command('/sbin/modprobe -n -v cramfs')
   describe check_cramfs do
-    its('stdout') { should match %r(install /bin/true) }
+    its('stdout') { should match %r{install /bin/true} }
   end
 end
 
-#control 'cis-fs-1.1.19' do
+# control 'cis-fs-1.1.19' do
 #  title 'Disable Mounting of freevxfs Filesystems'
 
-#control 'cis-fs-1.1.20' do
+# control 'cis-fs-1.1.20' do
 #  title 'Disable Mounting of jffs2 Filesystems'
 
-#control 'cis-fs-1.1.21' do
+# control 'cis-fs-1.1.21' do
 #  title 'Disable Mounting of hfs Filesystems'
 
-#control 'cis-fs-1.1.22' do
+# control 'cis-fs-1.1.22' do
 #  title 'Disable Mounting of hfsplus Filesystems'
 
 control 'cis-fs-1.1.23' do
@@ -203,7 +203,7 @@ control 'cis-fs-1.1.23' do
   end
   check_squashfs = command('/sbin/modprobe -n -v squashfs')
   describe check_squashfs do
-    its('stdout') { should match %r(install /bin/true) }
+    its('stdout') { should match %r{install /bin/true} }
   end
 end
 
@@ -219,6 +219,6 @@ control 'cis-fs-1.1.24' do
   end
   check_udf = command('/sbin/modprobe -n -v udf')
   describe check_udf do
-    its('stdout') { should match %r(install /bin/true) }
+    its('stdout') { should match %r{install /bin/true} }
   end
 end
