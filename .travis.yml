@@ -12,7 +12,7 @@ services: docker
 
 env:
   matrix:
-    - INSTANCE=default-centos-7
+    - INSTANCE=centos-7
 
 # Don't bundle install
 install: echo 'skip bundle install'
