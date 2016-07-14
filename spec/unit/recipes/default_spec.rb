@@ -23,6 +23,22 @@ describe 'base_hardening::default' do
     expect(chef_run).to include_recipe('openssh')
   end
 
+  it 'renders /etc/ssh/sshd_config' do
+    expect(chef_run).to render_file('/etc/ssh/sshd_config').with_content { |content|
+      expect(content).to include('ChallengeResponseAuthentication no')
+      expect(content).to include('Ciphers aes256-ctr,aes192-ctr,aes128-ctr')
+      expect(content).to include('GssapiAuthentication yes')
+      expect(content).to include('KexAlgorithms diffie-hellman-group-exchange-sha256')
+      expect(content).to include('LogLevel VERBOSE')
+      expect(content).to include('MACs hmac-sha2-512,hmac-sha2-256')
+      expect(content).to include('PasswordAuthentication no')
+      expect(content).to include('PermitRootLogin no')
+      expect(content).to include('Protocol 2')
+      expect(content).to include('SyslogFacility AUTHPRIV')
+      expect(content).to include('UsePAM yes')
+    }
+  end
+
   it 'includes the rhel recipe' do
     expect(chef_run).to include_recipe('base_hardening::rhel')
   end
