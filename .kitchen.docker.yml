@@ -26,6 +26,3 @@ suites:
   - name: harden
     run_list:
       - recipe[base_hardening::default]
-    verifier:
-      inspec_tests:
-        - https://github.com/trilitheus/inspec_hardening_tests
