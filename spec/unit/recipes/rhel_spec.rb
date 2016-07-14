@@ -86,9 +86,9 @@ describe 'base_hardening::rhel' do
 
     it 'renders /etc/modprobe.d/CIS.conf' do
       expect(chef_run).to render_file('/etc/modprobe.d/CIS.conf').with_content { |content|
-        expect(content).to match(%r(install\s+cramfs\s+/bin/true))
-        expect(content).to match(%r(install\s+udf\s+/bin/true))
-        expect(content).to match(%r(install\s+squashfs\s+/bin/true))
+        expect(content).to match(%r{install\s+cramfs\s+/bin/true})
+        expect(content).to match(%r{install\s+udf\s+/bin/true})
+        expect(content).to match(%r{install\s+squashfs\s+/bin/true})
       }
     end
 
