@@ -12,6 +12,7 @@ describe 'base_hardening::rhel' do
       runner = ChefSpec::ServerRunner.new
       runner.node.automatic['os'] = 'linux'
       runner.node.automatic['platform_family'] = 'rhel'
+      runner.node.automatic['platform'] = 'centos'
       runner.node.automatic['platform_version'] = '7'
       runner.converge(described_recipe)
     end
@@ -22,6 +23,20 @@ describe 'base_hardening::rhel' do
 
     it 'renders /etc/profile' do
       expect(chef_run).to render_file('/etc/profile').with_content(/umask\s+022/)
+    end
+
+    it 'renders /etc/pam.d/passwd' do
+      expect(chef_run).to render_file('/etc/pam.d/passwd').with_content { |content|
+        expect(content).to match(/auth\s+include\s+system-auth/)
+        expect(content).to match(/account\s+include\s+system-auth/)
+        expect(content).to match(/password\s+include\s+system-auth/)
+        expect(content).to match(/-password\s+optional\s+pam_gnome_keyring.so\s+use_authtok/)
+        expect(content).to match(/password\s+substack\s+postlogin/)
+      }
+    end
+
+    it 'renders /etc/sysconfig/init' do
+      expect(chef_run).to render_file('/etc/sysconfig/init').with_content(/umask\s+027/)
     end
 
     it 'renders /etc/pam.d/system-auth-ac' do
@@ -38,6 +53,54 @@ describe 'base_hardening::rhel' do
         expect(content).to match(/password\s+requisite\s+pam_cracklib.so\s+try_first_pass\s+retry=3\s+minlen=8\s+dcredit=-1\s+ucredit=-1\s+ocredit=-1\s+lcredit=-1/)
         expect(content).to match(/password\s+sufficient\s+pam_unix.so\s+sha512\s+shadow\s+nullok\s+try_first_pass\s+use_authtok\s+remember=24/)
       }
+    end
+
+    it 'creates /etc/cron.allow' do
+      expect(chef_run).to create_file('/etc/cron.allow').with(
+        user: 'root',
+        group: 'root',
+        mode: '00400',
+        content: 'root'
+      )
+    end
+
+    it 'creates /etc/at.allow' do
+      expect(chef_run).to create_file('/etc/at.allow').with(
+        user: 'root',
+        group: 'root',
+        mode: '00400',
+        content: nil
+      )
+    end
+
+    it 'renders /etc/login.defs' do
+      expect(chef_run).to render_file('/etc/login.defs').with_content { |content|
+        expect(content).to include('ENCRYPT_METHOD SHA512')
+        expect(content).to match(/UMASK\s+077/)
+      }
+    end
+
+    it 'renders /etc/bashrc' do
+      expect(chef_run).to render_file('/etc/bashrc').with_content(/umask\s+022/)
+    end
+
+    it 'renders /etc/modprobe.d/CIS.conf' do
+      expect(chef_run).to render_file('/etc/modprobe.d/CIS.conf').with_content { |content|
+        expect(content).to match(%r(install\s+cramfs\s+/bin/true))
+        expect(content).to match(%r(install\s+udf\s+/bin/true))
+        expect(content).to match(%r(install\s+squashfs\s+/bin/true))
+      }
+    end
+
+    it 'renders /etc/sysctl.conf' do
+      expect(chef_run).to render_file('/etc/sysctl.conf').with_content { |content|
+        expect(content).to match(/kernel.randomize_va_space\s+=\s+2/)
+        expect(content).to match(/fs.suid_dumpable\s+=\s+0/)
+      }
+    end
+
+    it 'renders /etc/security/limits.conf' do
+      expect(chef_run).to render_file('/etc/security/limits.conf').with_content(/\*\s+hard\s+core\s+0/)
     end
   end
 end
