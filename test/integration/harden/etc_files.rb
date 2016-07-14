@@ -1,9 +1,9 @@
 describe limits_conf do
-  its('*') { should include ['hard', 'core', '0'] }
+  its('*') { should include %w(hard core 0) }
 end
 
 describe login_defs do
-  its('ENCRYPT_METHOD') { should eq 'SHA512'}
+  its('ENCRYPT_METHOD') { should eq 'SHA512' }
 end
 describe login_defs do
   its('UMASK') { should eq '077' }
