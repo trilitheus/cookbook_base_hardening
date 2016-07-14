@@ -9,6 +9,6 @@ when 'linux'
   include_recipe 'openssh::default'
   case node['platform_family']
   when 'rhel'
-    include_recipe 'base_hardening::centos'
+    include_recipe 'base_hardening::rhel'
   end
 end
