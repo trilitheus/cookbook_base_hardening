@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+verifier:
+  name: inspec
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-7.2
+    driver:
+      box: packer_centos7_virtualbox
+      box_url: ~/packer_vbox_builds/packer_centos7_virtualbox.box
+
+suites:
+  - name: harden
+    run_list:
+      - recipe[base_hardening::default]
+    verifier:
+      inspec_tests:
+        - https://github.com/trilitheus/inspec_hardening_tests
