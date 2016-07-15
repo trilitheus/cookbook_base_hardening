@@ -1,13 +1,17 @@
-template '/etc/profile' do
+# mode 644 files
+%w{
+  /etc/profile
+  /etc/sysconfig/init
+  /etc/login.defs
+  /etc/bashrc
+  /etc/sysctl.conf
+  /etc/security/limits.conf
+}.each do |tmpl|
+  template tmpl do
   user 'root'
   group 'root'
   mode '00644'
-end
-
-template '/etc/sysconfig/init' do
-  user 'root'
-  group 'root'
-  mode '00644'
+  end
 end
 
 template '/etc/pam.d/passwd' do
@@ -38,32 +42,8 @@ file '/etc/at.allow' do
   mode '00400'
 end
 
-template '/etc/login.defs' do
-  user 'root'
-  group 'root'
-  mode '00644'
-end
-
-template '/etc/bashrc' do
-  user 'root'
-  group 'root'
-  mode '00644'
-end
-
 template '/etc/modprobe.d/CIS.conf' do
   user 'root'
   group 'root'
   mode '00600'
-end
-
-template '/etc/sysctl.conf' do
-  user 'root'
-  group 'root'
-  mode '00644'
-end
-
-template '/etc/security/limits.conf' do
-  user 'root'
-  group 'root'
-  mode '00644'
 end
