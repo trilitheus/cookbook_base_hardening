@@ -4,7 +4,7 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  base_hardening (0.1.0)
+  base_hardening (0.2.0)
     openssh (~> 2.0.0)
   iptables (2.2.0)
   openssh (2.0.0)
