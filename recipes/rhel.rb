@@ -1,16 +1,16 @@
 # mode 644 files
-%w{
+%w(
   /etc/profile
   /etc/sysconfig/init
   /etc/login.defs
   /etc/bashrc
   /etc/sysctl.conf
   /etc/security/limits.conf
-}.each do |tmpl|
+).each do |tmpl|
   template tmpl do
-  user 'root'
-  group 'root'
-  mode '00644'
+    user 'root'
+    group 'root'
+    mode '00644'
   end
 end
 
