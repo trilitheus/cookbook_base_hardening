@@ -7,3 +7,4 @@ long_description 'Installs/Configures base_hardening'
 version '0.2.0'
 
 depends 'openssh', '~> 2.0.0'
+depends 'sysctl', '~> 0.6.0'
