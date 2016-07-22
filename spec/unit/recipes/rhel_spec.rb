@@ -14,6 +14,7 @@ describe 'base_hardening::rhel' do
       runner.node.automatic['platform_family'] = 'rhel'
       runner.node.automatic['platform'] = 'centos'
       runner.node.automatic['platform_version'] = '7'
+      runner.node.automatic['virtualization']['system'] = 'docker'
       runner.converge(described_recipe)
     end
 

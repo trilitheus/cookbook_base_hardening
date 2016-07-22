@@ -12,6 +12,7 @@ describe 'base_hardening::default' do
       runner = ChefSpec::ServerRunner.new
       runner.node.automatic['os'] = 'linux'
       runner.node.automatic['platform_family'] = 'rhel'
+      runner.node.automatic['virtualization']['system'] = 'docker'
       runner.converge(described_recipe)
     end
 
