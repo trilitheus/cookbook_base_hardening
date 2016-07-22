@@ -8,6 +8,8 @@ addons:
     packages:
       - chefdk
 
+cache: apt
+
 services: docker
 
 env:
