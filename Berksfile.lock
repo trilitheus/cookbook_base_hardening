@@ -4,14 +4,14 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  base_hardening (0.2.0)
+  base_hardening (0.3.1)
     openssh (~> 2.0.0)
-    sysctl (~> 0.6.0)
-  compat_resource (12.10.6)
+    sysctl (~> 0.8.0)
+  compat_resource (12.10.7)
   iptables (2.2.0)
-  ohai (4.1.1)
+  ohai (4.2.0)
     compat_resource (>= 12.10)
   openssh (2.0.0)
     iptables (>= 1.0)
-  sysctl (0.6.2)
-    ohai (>= 0.0.0)
+  sysctl (0.8.0)
+    ohai (~> 4.0)
