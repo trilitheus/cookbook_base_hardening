@@ -29,27 +29,7 @@ end
   end
 end
 
-file '/etc/cron.allow' do
-  content 'root'
-  user 'root'
-  group 'root'
-  mode '00400'
-end
-
-file '/etc/at.allow' do
-  user 'root'
-  group 'root'
-  mode '00400'
-end
-
 template '/etc/modprobe.d/CIS.conf' do
-  user 'root'
-  group 'root'
-  mode '00600'
-end
-
-# CIS-6.1.4
-template '/etc/crontab' do
   user 'root'
   group 'root'
   mode '00600'

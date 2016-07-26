@@ -7,6 +7,7 @@
 case node['os']
 when 'linux'
   include_recipe 'openssh::default'
+  include_recipe 'base_hardening::cron'
   include_recipe 'base_hardening::kernel_parameters'
   case node['platform_family']
   when 'rhel'
