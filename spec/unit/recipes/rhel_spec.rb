@@ -103,5 +103,13 @@ describe 'base_hardening::rhel' do
     it 'renders /etc/security/limits.conf' do
       expect(chef_run).to render_file('/etc/security/limits.conf').with_content(/\*\s+hard\s+core\s+0/)
     end
+
+    it 'sets the user/group and permissions on /etc/crontab' do
+      expect(chef_run).to create_template('/etc/crontab').with(
+        user: 'root',
+        group: 'root',
+        mode: '00600'
+      )
+    end
   end
 end
