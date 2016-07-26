@@ -30,3 +30,11 @@ end
     mode '00700'
   end
 end
+
+%w(/etc/at.deny
+   /etc/cron.deny
+  ).each do |f|
+  file f do
+    action :delete
+  end
+end
