@@ -56,24 +56,6 @@ describe 'base_hardening::rhel' do
       }
     end
 
-    it 'creates /etc/cron.allow' do
-      expect(chef_run).to create_file('/etc/cron.allow').with(
-        user: 'root',
-        group: 'root',
-        mode: '00400',
-        content: 'root'
-      )
-    end
-
-    it 'creates /etc/at.allow' do
-      expect(chef_run).to create_file('/etc/at.allow').with(
-        user: 'root',
-        group: 'root',
-        mode: '00400',
-        content: nil
-      )
-    end
-
     it 'renders /etc/login.defs' do
       expect(chef_run).to render_file('/etc/login.defs').with_content { |content|
         expect(content).to include('ENCRYPT_METHOD SHA512')
@@ -102,14 +84,6 @@ describe 'base_hardening::rhel' do
 
     it 'renders /etc/security/limits.conf' do
       expect(chef_run).to render_file('/etc/security/limits.conf').with_content(/\*\s+hard\s+core\s+0/)
-    end
-
-    it 'sets the user/group and permissions on /etc/crontab' do
-      expect(chef_run).to create_template('/etc/crontab').with(
-        user: 'root',
-        group: 'root',
-        mode: '00600'
-      )
     end
   end
 end
