@@ -33,7 +33,7 @@ end
 
 %w(/etc/at.deny
    /etc/cron.deny
-  ).each do |f|
+).each do |f|
   file f do
     action :delete
   end

@@ -100,7 +100,7 @@ describe 'base_hardening::cron' do
       expect(chef_run).to create_file('/etc/at.allow').with(
         user: 'root',
         group: 'root',
-        mode: '00400',
+        mode: '00400'
       )
     end
 
