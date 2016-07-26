@@ -128,3 +128,11 @@ end
 describe file('/etc/crontab') do
   its('mode') { should eq 0600 }
 end
+
+describe file('/etc/at.deny') do
+  it { should_not exist }
+end
+
+describe file('/etc/cron.deny') do
+  it { should_not exist }
+end
