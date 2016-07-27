@@ -34,3 +34,5 @@ template '/etc/modprobe.d/CIS.conf' do
   group 'root'
   mode '00600'
 end
+
+template '/etc/pam.d/su'

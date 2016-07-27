@@ -33,6 +33,6 @@ end
 describe file('/etc/pam.d/passwd') do
   its('content') { should match(/password\s+substack\s+postlogin/) }
 end
-describe_file('/etc/pam.d/su') do
+describe file('/etc/pam.d/su') do
   its('content') { should match(/^auth\s+required\s+pam_wheel.so\s+use_uid$/) }
 end
