@@ -50,6 +50,10 @@ describe 'base_hardening::default' do
       }
     end
 
+    it 'renders /etc/securetty' do
+      expect(chef_run).to render_file('/etc/securetty').with_content(/\Atty1\ntty2\ntty3\ntty4\ntty5\ntty6\ntty7\ntty8\ntty9\ntty10\ntty11\nttyS0\Z/)
+    end
+
     it 'includes the rhel recipe' do
       expect(chef_run).to include_recipe('base_hardening::rhel')
     end
