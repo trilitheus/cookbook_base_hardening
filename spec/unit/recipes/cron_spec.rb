@@ -95,6 +95,5 @@ describe 'base_hardening::cron' do
     it 'ensures at.deny is deleted' do
       expect(chef_run).to delete_file('/etc/at.deny')
     end
-
   end
 end
