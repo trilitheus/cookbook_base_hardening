@@ -22,14 +22,17 @@ describe file('/etc/pam.d/passwd') do
   its('content') { should match(/auth\s+include\s+system-auth/) }
 end
 describe file('/etc/pam.d/passwd') do
-  its('content') { match(/account\s+include\s+system-auth/) }
+  its('content') { should match(/account\s+include\s+system-auth/) }
 end
 describe file('/etc/pam.d/passwd') do
-  its('content') { match(/password\s+include\s+system-auth/) }
+  its('content') { should match(/password\s+include\s+system-auth/) }
 end
 describe file('/etc/pam.d/passwd') do
-  its('content') { match(/-password\s+optional\s+pam_gnome_keyring.so\s+use_authtok/) }
+  its('content') { should match(/-password\s+optional\s+pam_gnome_keyring.so\s+use_authtok/) }
 end
 describe file('/etc/pam.d/passwd') do
-  its('content') { match(/password\s+substack\s+postlogin/) }
+  its('content') { should match(/password\s+substack\s+postlogin/) }
+end
+describe_file('/etc/pam.d/su') do
+  its('content') { should match(/^auth\s+required\s+pam_wheel.so\s+use_uid$/) }
 end
