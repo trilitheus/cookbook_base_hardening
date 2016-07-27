@@ -8,6 +8,15 @@ end
 describe login_defs do
   its('UMASK') { should eq '077' }
 end
+describe login_defs do
+  its('PASS_MAX_DAYS') { should eq '90' }
+end
+describe login_defs do
+  its('PASS_MIN_DAYS') { should eq '7' }
+end
+describe login_defs do
+  its('PASS_WARN_AGE') { should eq '7' }
+end
 
 describe file('/etc/profile') do
   its('content') { should match(/umask\s+022/) }

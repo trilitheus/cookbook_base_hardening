@@ -58,8 +58,11 @@ describe 'base_hardening::rhel' do
 
     it 'renders /etc/login.defs' do
       expect(chef_run).to render_file('/etc/login.defs').with_content { |content|
-        expect(content).to include('ENCRYPT_METHOD SHA512')
-        expect(content).to match(/UMASK\s+077/)
+        expect(content).to match(/^ENCRYPT_METHOD\s+SHA512$/)
+        expect(content).to match(/^UMASK\s+077$/)
+        expect(content).to match(/^PASS_MAX_DAYS\s+90$/)
+        expect(content).to match(/^PASS_MIN_DAYS\s+7$/)
+        expect(content).to match(/^PASS_WARN_AGE\s+7$/)
       }
     end
 
