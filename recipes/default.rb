@@ -9,6 +9,7 @@ when 'linux'
   include_recipe 'openssh::default'
   include_recipe 'base_hardening::cron'
   include_recipe 'base_hardening::kernel_parameters'
+  include_recipe 'base_hardening::issue_file'
 
   template '/etc/securetty' do
     user 'root'
