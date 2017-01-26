@@ -63,6 +63,5 @@ describe 'base_hardening::default' do
     it 'includes the issue_file recipe' do
       expect(chef_run).to include_recipe('base_hardening::issue_file')
     end
-    
   end
 end

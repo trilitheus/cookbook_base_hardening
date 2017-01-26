@@ -15,6 +15,5 @@ describe 'base_hardening::issue_file' do
     it 'created the file /etc/issue' do
       expect(chef_run).to create_cookbook_file('/etc/issue')
     end
-
   end
 end
