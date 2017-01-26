@@ -23,7 +23,7 @@ describe sshd_config('/etc/ssh/sshd_config') do
   its('PermitRootLogin') { should eq 'no' }
 end
 describe sshd_config('/etc/ssh/sshd_config') do
-  its('KexAlgorithms') { should eq 'diffie-hellman-group-exchange-sha256' }
+  its('KexAlgorithms') { should eq 'diffie-hellman-group1-sha1,diffie-hellman-group-exchange-sha256' }
 end
 describe sshd_config('/etc/ssh/sshd_config') do
   its('Ciphers') { should eq 'aes256-ctr,aes192-ctr,aes128-ctr' }
