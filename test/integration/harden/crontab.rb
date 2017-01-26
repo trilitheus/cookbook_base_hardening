@@ -14,7 +14,7 @@ describe file('/etc/cron.allow') do
   its('group') { should eq 'root' }
 end
 describe file('/etc/cron.allow') do
-  its('mode') { should eq 0400 }
+  its('mode') { should eq 0o400 }
 end
 describe file('/etc/cron.allow') do
   its('content') { should eq 'root' }
@@ -33,7 +33,7 @@ describe file('/etc/at.allow') do
   its('group') { should eq 'root' }
 end
 describe file('/etc/at.allow') do
-  its('mode') { should eq 0400 }
+  its('mode') { should eq 0o400 }
 end
 describe file('/etc/at.allow') do
   its('content') { should eq '' }
@@ -52,7 +52,7 @@ describe file('/etc/cron.hourly') do
   its('group') { should eq 'root' }
 end
 describe file('/etc/cron.hourly') do
-  its('mode') { should eq 0700 }
+  its('mode') { should eq 0o700 }
 end
 
 describe file('/etc/cron.daily') do
@@ -68,7 +68,7 @@ describe file('/etc/cron.daily') do
   its('group') { should eq 'root' }
 end
 describe file('/etc/cron.daily') do
-  its('mode') { should eq 0700 }
+  its('mode') { should eq 0o700 }
 end
 
 describe file('/etc/cron.weekly') do
@@ -84,7 +84,7 @@ describe file('/etc/cron.weekly') do
   its('group') { should eq 'root' }
 end
 describe file('/etc/cron.weekly') do
-  its('mode') { should eq 0700 }
+  its('mode') { should eq 0o700 }
 end
 
 describe file('/etc/cron.monthly') do
@@ -100,7 +100,7 @@ describe file('/etc/cron.monthly') do
   its('group') { should eq 'root' }
 end
 describe file('/etc/cron.monthly') do
-  its('mode') { should eq 0700 }
+  its('mode') { should eq 0o700 }
 end
 
 describe file('/etc/cron.d') do
@@ -116,7 +116,7 @@ describe file('/etc/cron.d') do
   its('group') { should eq 'root' }
 end
 describe file('/etc/cron.d') do
-  its('mode') { should eq 0700 }
+  its('mode') { should eq 0o700 }
 end
 
 describe file('/etc/crontab') do
@@ -126,7 +126,7 @@ describe file('/etc/crontab') do
   its('group') { should eq 'root' }
 end
 describe file('/etc/crontab') do
-  its('mode') { should eq 0600 }
+  its('mode') { should eq 0o600 }
 end
 
 describe file('/etc/at.deny') do
