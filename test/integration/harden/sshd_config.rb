@@ -56,7 +56,7 @@ describe sshd_config('/etc/ssh/sshd_config') do
   its('IgnoreRhosts') { should eq 'yes' }
 end
 describe sshd_config('/etc/ssh/sshd_config') do
-  its('AllowUsers') { should eq 'vagrant' }
+  its('AllowUsers') { should eq 'vagrant centos' }
 end
 describe sshd_config('/etc/ssh/sshd_config') do
   its('Banner') { should eq '/etc/issue' }
