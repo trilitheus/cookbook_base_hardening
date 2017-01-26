@@ -8,12 +8,8 @@ require 'spec_helper'
 
 describe 'base_hardening::rhel' do
   context 'When all attributes are default on RHEL family' do
-    let(:chef_run) do
+    cached(:chef_run) do
       runner = ChefSpec::ServerRunner.new
-      runner.node.automatic['os'] = 'linux'
-      runner.node.automatic['platform_family'] = 'rhel'
-      runner.node.automatic['platform'] = 'centos'
-      runner.node.automatic['platform_version'] = '7'
       runner.node.automatic['virtualization']['system'] = 'docker'
       runner.converge(described_recipe)
     end
