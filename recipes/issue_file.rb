@@ -1,1 +1,3 @@
-cookbook_file '/etc/issue'
+cookbook_file '/etc/issue' do
+  action :create
+end
