@@ -6,7 +6,7 @@ verifier:
   name: inspec
 
 provisioner:
-  name: chef_zero
+  name: policyfile_zero
 
 platforms:
   - name: centos-7.2
