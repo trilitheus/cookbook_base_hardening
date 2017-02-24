@@ -1,0 +1,154 @@
+{
+  "revision_id": "0958688bc502c969e399f08f124cf5d11c5b50a6a9b337cde9f4ca7dff612710",
+  "name": "base-server-hardening",
+  "run_list": [
+    "recipe[base_hardening::default]"
+  ],
+  "cookbook_locks": {
+    "base_hardening": {
+      "version": "0.3.2",
+      "identifier": "93d9afc8bbd8728969342f1c0a6e79d8f24fbfc9",
+      "dotted_decimal_identifier": "41616170586724466.38677744658942574.133972685209545",
+      "source": ".",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": null,
+        "revision": "6611e2d3b0752409242b4bc55679f597e4952e5e",
+        "working_tree_clean": false,
+        "published": false,
+        "synchronized_remote_branches": [
+
+        ]
+      },
+      "source_options": {
+        "path": "."
+      }
+    },
+    "openssh": {
+      "version": "2.0.0",
+      "identifier": "3770bec9e36f03e9617787c91ff22a1ef120d56c",
+      "dotted_decimal_identifier": "15605088452308739.65690835580690418.46312382846316",
+      "cache_key": "openssh-2.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/openssh/versions/2.0.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/openssh/versions/2.0.0/download",
+        "version": "2.0.0"
+      }
+    },
+    "sysctl": {
+      "version": "0.8.1",
+      "identifier": "77d963cd9126872c4cae4a7b11539f2fc2c23068",
+      "dotted_decimal_identifier": "33734544902399623.12469210432868691.175027479785576",
+      "cache_key": "sysctl-0.8.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/sysctl/versions/0.8.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/sysctl/versions/0.8.1/download",
+        "version": "0.8.1"
+      }
+    },
+    "iptables": {
+      "version": "3.1.0",
+      "identifier": "6ec37baa01f4be9b7fb6f3ef56073f739602bbbc",
+      "dotted_decimal_identifier": "31177183338820798.43769045143475719.69765670550460",
+      "cache_key": "iptables-3.1.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/iptables/versions/3.1.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/iptables/versions/3.1.0/download",
+        "version": "3.1.0"
+      }
+    },
+    "compat_resource": {
+      "version": "12.16.3",
+      "identifier": "ee0005d802b7faad3584425961e9937962c8d65e",
+      "dotted_decimal_identifier": "66991069556029434.48754013136052713.162149557655134",
+      "cache_key": "compat_resource-12.16.3-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/compat_resource/versions/12.16.3/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/compat_resource/versions/12.16.3/download",
+        "version": "12.16.3"
+      }
+    },
+    "ohai": {
+      "version": "5.0.0",
+      "identifier": "2fa0ad2a12f41737ec5f550fd7d758da25d76c7b",
+      "dotted_decimal_identifier": "13405989501072407.15741017912235991.97693960989819",
+      "cache_key": "ohai-5.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/5.0.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/5.0.0/download",
+        "version": "5.0.0"
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "base_hardening",
+        ">= 0.0.0"
+      ],
+      [
+        "openssh",
+        "= 2.0.0"
+      ],
+      [
+        "sysctl",
+        "= 0.8.1"
+      ],
+      [
+        "iptables",
+        "= 3.1.0"
+      ],
+      [
+        "compat_resource",
+        "= 12.16.3"
+      ],
+      [
+        "ohai",
+        "= 5.0.0"
+      ]
+    ],
+    "dependencies": {
+      "base_hardening (0.3.2)": [
+        [
+          "openssh",
+          "~> 2.0.0"
+        ],
+        [
+          "sysctl",
+          "~> 0.8.0"
+        ]
+      ],
+      "openssh (2.0.0)": [
+        [
+          "iptables",
+          ">= 1.0.0"
+        ]
+      ],
+      "sysctl (0.8.1)": [
+        [
+          "ohai",
+          ">= 4.0.0"
+        ]
+      ],
+      "iptables (3.1.0)": [
+        [
+          "compat_resource",
+          ">= 12.14.3"
+        ]
+      ],
+      "compat_resource (12.16.3)": [
+
+      ],
+      "ohai (5.0.0)": [
+
+      ]
+    }
+  }
+}
