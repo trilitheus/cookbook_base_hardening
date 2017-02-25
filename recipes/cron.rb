@@ -22,8 +22,7 @@ end
    /etc/cron.daily
    /etc/cron.weekly
    /etc/cron.monthly
-   /etc/cron.d
-).each do |dir|
+   /etc/cron.d).each do |dir|
   directory dir do
     owner 'root'
     group 'root'
@@ -32,8 +31,7 @@ end
 end
 
 %w(/etc/at.deny
-   /etc/cron.deny
-).each do |f|
+   /etc/cron.deny).each do |f|
   file f do
     action :delete
   end

@@ -21,8 +21,7 @@ describe 'base_hardening::kernel_parameters' do
        net.ipv4.conf.all.accept_redirects
        net.ipv4.conf.default.accept_redirects
        net.ipv4.conf.all.secure_redirects
-       net.ipv4.conf.default.secure_redirects
-    ).each do |sysctl_0|
+       net.ipv4.conf.default.secure_redirects).each do |sysctl_0|
       it "sets #{sysctl_0}" do
         expect(chef_run).to apply_sysctl_param(sysctl_0).with_value('0')
       end
@@ -30,8 +29,7 @@ describe 'base_hardening::kernel_parameters' do
 
     %w(net.ipv4.conf.all.log_martians
        net.ipv4.conf.default.log_martians
-       net.ipv6.conf.all.disable_ipv6
-    ).each do |sysctl_1|
+       net.ipv6.conf.all.disable_ipv6).each do |sysctl_1|
       it "sets #{sysctl_1}" do
         expect(chef_run).to apply_sysctl_param(sysctl_1).with_value('1')
       end
