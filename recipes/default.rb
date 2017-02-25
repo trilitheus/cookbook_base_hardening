@@ -6,7 +6,7 @@
 #
 case node['os']
 when 'linux'
-  include_recipe 'base_hardening::issue'
+  include_recipe 'base_hardening::issue_file'
   include_recipe 'openssh::default'
   include_recipe 'base_hardening::cron'
   include_recipe 'base_hardening::kernel_parameters'
