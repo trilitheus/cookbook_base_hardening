@@ -1,5 +1,5 @@
 {
-  "revision_id": "0958688bc502c969e399f08f124cf5d11c5b50a6a9b337cde9f4ca7dff612710",
+  "revision_id": "6890e5dbaae9b8d9e4892b1c54fc56ba83f6e133517c15081cc5f6d43ec28159",
   "name": "base-server-hardening",
   "run_list": [
     "recipe[base_hardening::default]"
@@ -7,14 +7,14 @@
   "cookbook_locks": {
     "base_hardening": {
       "version": "0.3.2",
-      "identifier": "93d9afc8bbd8728969342f1c0a6e79d8f24fbfc9",
-      "dotted_decimal_identifier": "41616170586724466.38677744658942574.133972685209545",
+      "identifier": "30197114f15ed89db90ac64d2105de622fbcfb6c",
+      "dotted_decimal_identifier": "13538772355473112.44395027271328005.244513289075564",
       "source": ".",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": null,
-        "revision": "6611e2d3b0752409242b4bc55679f597e4952e5e",
+        "revision": "2c3ac754532a035d061d17e81b0c0e831198e4c1",
         "working_tree_clean": false,
         "published": false,
         "synchronized_remote_branches": [
@@ -115,16 +115,6 @@
       ]
     ],
     "dependencies": {
-      "base_hardening (0.3.2)": [
-        [
-          "openssh",
-          "~> 2.0.0"
-        ],
-        [
-          "sysctl",
-          "~> 0.8.0"
-        ]
-      ],
       "openssh (2.0.0)": [
         [
           "iptables",
@@ -148,6 +138,16 @@
       ],
       "ohai (5.0.0)": [
 
+      ],
+      "base_hardening (0.3.2)": [
+        [
+          "openssh",
+          "~> 2.0.0"
+        ],
+        [
+          "sysctl",
+          "~> 0.8.0"
+        ]
       ]
     }
   }
