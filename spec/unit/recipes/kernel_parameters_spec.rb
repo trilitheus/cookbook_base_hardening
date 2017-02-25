@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'base_hardening::kernel_parameters' do
   context 'When all attributes are default on RHEL family docker container' do
-    let(:chef_run) do
+    cached(:chef_run) do
       runner = ChefSpec::ServerRunner.new
       runner.node.automatic['os'] = 'linux'
       runner.node.automatic['platform_family'] = 'rhel'
